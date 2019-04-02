@@ -1,23 +1,20 @@
-print('Вводите элементы, нажимайте enter')
-print('для окончания ввода нажмите enter')
-a =  int(input('>>'))
-my_list = []
-while :
-    try:
- my_list.append(a)
- a =  int(input('>>'))
-    except:
-        break
+print('Вводите элементы, нажимайте enter') 
+a = int(input('> ')) 
+my_list = [] 
+for i in range(a): 
+a= int(input('> ')) 
+my_list.append(a) 
 
-print('В списке {} элементов'.format(len(my_list)))
 
-my_list.pop(0)
-my_list.pop(0)
+print('В списке {} элементов'.format(len(my_list))) 
 
-k = 0
-while k <  2:
- n = input("Введите число для добавления в конец списка: ")
- my_list.append(int(n))
- k += 1
+my_list.pop(0) 
+my_list.pop(0) 
+
+
+for i in range(2): 
+n = input("Введите число для добавления в конец списка: ") 
+my_list.append(int(n)) 
+
 
 print(my_list)
