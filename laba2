@@ -5,9 +5,9 @@ str2 = str1.split()
 
 k = 0
 while k <  len(str2):
- str2[k] =  str2[k].replace(',',')
- str2[k] =  str2[k].replace('.', ')
- str2[k] =  str2[k].replace('—',')
+ str2[k] =  str2[k].replace(',',' ')
+ str2[k] =  str2[k].replace('.',' ')
+ str2[k] =  str2[k].replace('—',' ')
  k += 1
 
 str1 = ''
