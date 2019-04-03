@@ -1,20 +1,18 @@
-print('Вводите элементы, нажимайте enter') 
-a = int(input('> ')) 
-my_list = [] 
-for i in range(a): 
-a= int(input('> ')) 
-my_list.append(a) 
+print ('Вводите элементы, нажимайте enter')
+a = int(input('> '))
+if a < 10:
+   print('Ошибка, введите снова')
+else:
+   my_list = []
+   for i in range(a):
+     a = int(input('> '))
+     my_list.append(a)
+   print('В списке {} элементов'.format(len(my_list)))
+   my_list.pop(0)
+   my_list.pop(0)
 
+   for i in range(2):
+     n = input("Введите число для добавления в конец списка: ")
+     my_list.append(int(n))
 
-print('В списке {} элементов'.format(len(my_list))) 
-
-my_list.pop(0) 
-my_list.pop(0) 
-
-
-for i in range(2): 
-n = input("Введите число для добавления в конец списка: ") 
-my_list.append(int(n)) 
-
-
-print(my_list)
+   print(my_list)
