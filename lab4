@@ -1,0 +1,35 @@
+#Клиент
+import socket
+
+sock = socket.socket()
+sock.connect(('localhost', 9091))
+string=input()
+sock.send(string.encode('utf-8'))
+data = sock.recv(1024)
+sock.close()
+
+print (data.decode('utf-8'))
+
+
+#Сервер
+import socket
+import datetime
+sock = socket.socket()
+sock.bind(('', 9091))
+
+
+
+
+while True:
+    sock.listen(1)
+    conn, addr = sock.accept()
+    print('connected:'), addr
+    data = conn.recv(1024)
+    if not data:
+        break
+    string=data.decode('utf-8')
+    if string =="date time":
+        conn.send(str(datetime.datetime.today().strftime("%d.%m.%Y %H:%M:%S")).encode('utf-8'))
+
+
+conn.close()
