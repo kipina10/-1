@@ -6,40 +6,16 @@ sock.connect(("localhost",9091))
 
 print(sock.recv(1024).decode())
 
-b = input('Введите матрицу в виде "[1 2 3; 4 5 6;7 8 9]" ')
-sock.send(b.encode())
+b = input('Введите матрицу в виде "[1 2 3; 4 5 6; 7 8 9]" ')
+if len(b)>20:
 
-print(sock.recv(65565).decode())
-sock.close()
+    sock.send(b.encode())
 
-
-#Сервер
-import socket
-
-HOST = 'localhost'
-PORT = 9091
-sock = socket.socket()
-sock.bind((HOST,PORT))
-while True:
-    sock.listen(1)
-    conn,adr=sock.accept()
-
-    text = 'Отправьте матрицу'
-    conn.send(text.encode())
-
-    text = conn.recv(65565).decode()
-    if not text:
-        break
-    try:
-        per = list(map(lambda x: x.strip().split(' '),text[1:-1].split(';')))
-        det=float(per[0][0])*float(per[1][1])*float(per[2][2])+\
-            float(per[0][1])*float(per[1][2])*float(per[2][0])+\
-            float(per[0][2])*float(per[1][0])*float(per[2][1])-\
-            float(per[0][2])*float(per[1][1])*float(per[2][0])-\
-            float(per[0][0])*float(per[1][2])*float(per[2][1])-\
-            float(per[0][1])*float(per[1][0])*float(per[2][2])
-        dat="Определитель матрицы= "+str(det)
-        conn.send(dat.encode())
-    except ValueError:
-        conn.send("Вы ввели неправильную матрицу".encode())
-
+    print(sock.recv(65565).decode())
+    sock.close()
+else:
+    print("Вы ввели матрицу неправильного размера")
+    b=str([1,2,3,4,5,6,7,8,9])
+    sock.send(b.encode())
+    print(sock.recv(65565).decode())
+    sock.close()
